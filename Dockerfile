@@ -28,7 +28,7 @@ RUN apk --update add              \
 
 ################################################################################
 # Install Terraform
-ENV TERRAFORM_VERSION=0.12.6
+ENV TERRAFORM_VERSION=0.12.7
 RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
@@ -36,7 +36,7 @@ RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
 
 ################################################################################
 # Install Terragrunt
-ENV TERRAGRUNT_VERSION=v0.19.11
+ENV TERRAGRUNT_VERSION=v0.19.21
 RUN wget https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
     chmod 755 terragrunt_linux_amd64 && \
     mv terragrunt_linux_amd64 /usr/local/bin/terragrunt

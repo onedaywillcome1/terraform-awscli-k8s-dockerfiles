@@ -1,3 +1,7 @@
+# v1.2
+* terraform:0.12.7
+* terragrunt:0.19.21
+
 # v1.1
 * Kubectl:1.15.1
 * aws-iam-authenticator:1.13.7
