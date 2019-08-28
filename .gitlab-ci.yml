@@ -1,0 +1,24 @@
+image: docker
+
+variables:
+  IMAGE_PATH: "${CI_REGISTRY}/vngrs/vngrs-hub/${CI_PROJECT_NAME}"
+  IMAGE_TAG:  "v1.0"
+    
+build:
+  script:
+    - IMAGE_LABEL=$IMAGE_PATH:$IMAGE_TAG
+    - echo Building image with tag $IMAGE_LABEL
+    - docker build --no-cache -t $IMAGE_LABEL .
+
+push:
+  when: manual
+  only:
+    - master
+    - tags
+  script:
+    - IMAGE_LABEL=$IMAGE_PATH:$IMAGE_TAG
+    - echo Building image with tag $IMAGE_LABEL
+    - docker build --no-cache -t $IMAGE_LABEL .
+    - docker login -u "${GITLAB_USER}" -p "${GITLAB_TOKEN}" "${CI_REGISTRY}"
+    - echo Pushing image= $IMAGE_LABEL to ${CI_REGISTRY}
+    - docker push $IMAGE_LABEL
