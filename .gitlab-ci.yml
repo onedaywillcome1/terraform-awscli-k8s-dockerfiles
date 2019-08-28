@@ -3,12 +3,16 @@ image: docker
 variables:
   IMAGE_PATH: "${CI_REGISTRY}/vngrs/vngrs-hub/${CI_PROJECT_NAME}"
   IMAGE_TAG:  "v1.0"
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: tcp://docker:2375
     
 build:
   script:
     - IMAGE_LABEL=$IMAGE_PATH:$IMAGE_TAG
     - echo Building image with tag $IMAGE_LABEL
     - docker build --no-cache -t $IMAGE_LABEL .
+  services:
+    - docker:dind
 
 push:
   when: manual
@@ -22,3 +26,5 @@ push:
     - docker login -u "${GITLAB_USER}" -p "${GITLAB_TOKEN}" "${CI_REGISTRY}"
     - echo Pushing image= $IMAGE_LABEL to ${CI_REGISTRY}
     - docker push $IMAGE_LABEL
+  services:
+    - docker:dind
