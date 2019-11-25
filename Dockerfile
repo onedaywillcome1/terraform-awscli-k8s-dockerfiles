@@ -28,7 +28,7 @@ RUN apk --update add              \
 
 ################################################################################
 # Install Terraform
-ENV TERRAFORM_VERSION=0.12.7
+ENV TERRAFORM_VERSION=0.12.16
 RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
@@ -36,7 +36,7 @@ RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
 
 ################################################################################
 # Install Terragrunt
-ENV TERRAGRUNT_VERSION=v0.19.21
+ENV TERRAGRUNT_VERSION=v0.21.6
 RUN wget https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 && \
     chmod 755 terragrunt_linux_amd64 && \
     mv terragrunt_linux_amd64 /usr/local/bin/terragrunt
@@ -44,7 +44,7 @@ RUN wget https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRU
 
 ################################################################################
 #Install Kubectl
-ENV KUBECTL_VERSION=v1.15.1
+ENV KUBECTL_VERSION=v1.16.3
 RUN curl -L -o /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
   chmod +x /usr/bin/kubectl && \
   kubectl version --client

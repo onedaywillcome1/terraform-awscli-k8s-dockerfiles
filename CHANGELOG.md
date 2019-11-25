@@ -1,3 +1,12 @@
+# v1.4
+* terraform:0.12.16
+* terragrunt:0.21.6
+* kubectl:1.16.3
+
+# v1.3
+* terraform:0.12.8
+* terragrunt:0.19.24
+
 # v1.2
 * terraform:0.12.7
 * terragrunt:0.19.21
